@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.*;
 
 public class Shield {
 
@@ -13,9 +14,15 @@ public class Shield {
         names.add("Jemma Simmons");
 
         // TODO 1 : map names to agents list
-        List<Agent> agents = new ArrayList<>();
+        List<Agent> agents;
+        agents = names.stream().map(name -> new Agent(name.split(" ")[0], name.split(" ")[1]))
+        			  .collect(Collectors.toList());
 
         showAgents(agents);
+        
+        System.out.println(LongStream.range(1,5).findAny().toString());
+        // Explanation of LongStream.range method : 
+        // https://www.javabrahman.com/java-8/java-8-how-to-use-range-rangeclosed-methods-of-intstream-longstream-with-examples/
     }
 
     // don't touch anything here !
